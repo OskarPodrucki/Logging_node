@@ -1,26 +1,22 @@
-// const login = "1"
-// const pass = "1"
+async function logIN(){
 
-// function logIN(){
-//     const formLogin = document.getElementById("login").value
-//     const formPass = document.getElementById("pass").value
+    const formLogin = document.getElementById("login").value
+    const formPass = document.getElementById("pass").value
 
-//     console.log(formLogin)
-//     console.log(formPass)
+    const data = await fetch(`http://localhost:3000/login/${formLogin}/${formPass}`)
+    const json = await data.json()
 
-//     if(formLogin==login && formPass==pass){
-//         alert("Zalogowano")
-//         localStorage.setItem("Czy_Zalogowany", "true")
-//     }else{
-//         alert("jaja se robisz że nie pamiętasz loginu >:(")
-//         localStorage.setItem("Czy_Zalogowany", "false")
-//     }
-// }
+    console.log(json)
 
-// function admIN(){
-//     const Czy_Zalogowany = localStorage.getItem("Czy_Zalogowany")
-//     if(Czy_Zalogowany != "true"){
-//     window.location.href = "login.html"
-//     alert("zaloguj się >:(")
-// }
-// }
+    localStorage.setItem("login", JSON.stringify(json))
+}
+
+function adminPage(){
+    const login = JSON.parse(localStorage.getItem("login"))
+
+    console.log(login)
+
+    if(login.upr!="admin"){
+        window.location.href = "login.html"
+    }
+}
