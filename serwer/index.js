@@ -14,7 +14,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "17.04.2023"
+    database: "users"
 })
 
 
@@ -26,8 +26,8 @@ con.connect(function (err) {
 })
 
 //Czy działa; odp w konsoli
-app.get("/", (req, res) => {
-    res.send("ok")
+app.get("/test", (req, res) => {
+    res.send({"status": "ok"})
 })
 
 //Czy działa; odp w terminalu
@@ -36,9 +36,9 @@ app.listen(port, () => {
 })
 
 //Zapytanie do bazy danych i wyświetlenie danych
-app.get("/select", (req, res) => {
-    const sql = "SELECT * FROM użytkownicy"
-    con.query(sql, function (err, result, fileds) { 
+app.get("/login", (req, res) => {
+    const sql = "SELECT * FROM users"
+    con.query(sql, function (err, result, fileds) {
         if (err) {
             console.log(err)
         } else res.send(result)
