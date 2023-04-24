@@ -35,7 +35,7 @@ app.listen(port, () => {
     console.log("Aplikacja działa na porcie:" + port)
 })
 
-//Zapytanie do bazy danych i wyświetlenie danych
+//Sprawdzanie zalogowania
 app.get("/login/:user/:password", (req, res) => {
     
     const user = req.params.user
