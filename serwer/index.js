@@ -27,7 +27,7 @@ con.connect(function (err) {
 
 //Czy działa; odp w konsoli
 app.get("/test", (req, res) => {
-    res.send({"status": "ok"})
+    res.send({ "status": "ok" })
 })
 
 //Czy działa; odp w terminalu
@@ -37,7 +37,7 @@ app.listen(port, () => {
 
 //Sprawdzanie zalogowania
 app.get("/login/:user/:password", (req, res) => {
-    
+
     const user = req.params.user
     const pass = req.params.password
     // const uprawnienia= req.params.uprawnienia /:uprawnienia
@@ -50,12 +50,12 @@ app.get("/login/:user/:password", (req, res) => {
         console.log(result)
         if (err) {
             console.log(err)
-        } else{
+        } else {
 
-            var status = {"status": false, "upr": ""}
+            var status = { "status": false, "upr": "user" }
 
-            if(result.length!=0){
-                if(result[0].Password == pass){
+            if (result.length != 0) {
+                if (result[0].Password == pass) {
                     status.status = true
                     status.upr = result[0].Uprawnienia
                     console.log(status)
@@ -67,9 +67,9 @@ app.get("/login/:user/:password", (req, res) => {
 
 
             res.send(status)
-        } 
-        
-        
+        }
+
+
     })
 })
 
